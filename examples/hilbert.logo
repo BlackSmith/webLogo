@@ -1,0 +1,24 @@
+to hilbert :n :t :l
+ if :n > 0 [
+   right :t
+   hilbert (:n-1) (-1*:t) :l
+   forward :l
+   left :t
+   hilbert (:n-1)  :t :l
+   forward :l
+   hilbert (:n-1)  :t :l
+   left :t
+   forward :l
+   hilbert (:n-1) (-1*:t)  :l
+   right :t
+ ]
+end
+
+
+home
+rt 45
+bk 200
+lt 45
+clean
+
+hilbert 4 90  20

@@ -1,0 +1,26 @@
+to listy :l 
+    rt 90
+    kapradi :l
+    rt 180
+    kapradi :l
+    rt 90
+end
+
+to kapradi :l
+  if :l > 4 [
+    fd :l
+    bk :l
+    fd (:l * 0.3)
+    listy (:l * 0.35)
+    fd (:l * 0.25)
+    listy (:l * 0.28)
+    fd (:l * 0.2)
+    listy (:l * 0.21)
+    bk (:l * 0.75)
+  ]
+end
+
+home 
+bk 240
+clean
+kapradi 500

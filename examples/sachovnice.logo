@@ -1,0 +1,68 @@
+to square :l
+  repeat 4 [ 
+    fd :l 
+    rt 90  
+  ]
+end
+
+to fillbox :l
+ ifelse :l < 3 [ 
+   square :l 
+ ] [ 
+   penup
+   fd 1 
+   rt 90 
+   fd 1 
+   lt 90 
+   pendown
+   fillbox (:l - 2)
+   penup
+   lt 90 
+   fd 1 
+   lt 90 
+   fd 1 
+   lt 180
+   pendown
+   square :l
+ ]
+end
+
+to boxline :l :odd
+ repeat 4 [
+   ifelse :odd = 1 [ 
+     fillbox :l 
+   ] [
+     square :l 
+   ]
+   rt 90 
+   fd :l 
+   lt 90
+   ifelse :odd = 1 [ 
+     square :l 
+   ] [ 
+     fillbox :l 
+   ]
+   rt 90 
+   fd :l 
+   lt 90
+ ]
+end
+
+to board :l
+ repeat 4 [
+   boxline :l 0
+   fd :l
+   lt 90
+   fd :l * 8
+   rt 90
+   boxline :l 1
+   fd :l
+   lt 90
+   fd :l * 8
+   rt 90
+ ]
+end
+
+home
+clean 
+board 30

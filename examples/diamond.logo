@@ -1,0 +1,18 @@
+to polygon :n :l
+  repeat :n [
+    fd :l 
+    lt (360 / :n) 
+  ]
+end
+
+to polydiamond :n :l
+  repeat :n [
+    polygon :n :l
+    rt (360 / :n)
+  ] 
+end
+
+home
+clean
+
+polydiamond 12 30

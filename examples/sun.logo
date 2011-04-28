@@ -1,0 +1,36 @@
+to circle :r :k
+  repeat :k [
+     fd (2 * (3.14 * (:r / :k)))
+     rt (360 / :k)
+  ]
+  lt (180 / :k)
+end
+
+to beams :r :k
+  repeat :k [
+     penup 
+     fd :r
+     pendown 
+     fd (:r / 2)
+     penup
+     bk (:r * (3 / 2))
+     pendown
+     rt (360 / :k)
+  ]
+end
+
+to sun :r :k
+  circle :r 100
+  penup
+  rt 90
+  fd :r
+  beams :r :k 
+end
+
+home
+rt 90
+bk 130
+lt 90
+clean
+sun 120 30
+

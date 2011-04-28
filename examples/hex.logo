@@ -1,0 +1,17 @@
+to triangle :l
+  repeat 3 [
+    fd :l
+    left 120
+  ]
+end
+
+to hex :l
+  repeat 6 [ 
+    triangle :l 
+    left 60 
+  ]
+end
+
+home
+clean
+hex 100

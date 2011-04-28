@@ -1,0 +1,105 @@
+
+to square :l
+  repeat 4 [ 
+    fd :l 
+    rt 90 
+  ]
+end
+
+to circle :l
+  repeat 20 [ 
+    fd :l 
+    lt (360 / 20) 
+  ]
+end
+
+to endbranch :l
+  fd :l
+  lt 45
+  square :l   
+  repeat 3 [
+    fd :l
+    rt 45
+    circle (:l / 10)
+    rt 45
+  ] 
+  fd :l
+  rt 135
+  bk :l
+end
+
+to endmezibranch :l
+  fd :l
+  lt 45
+  square :l   
+  fd :l rt 45
+  circle (:l / 10)
+  rt 45 
+  fd :l 
+  rt 90 
+  fd :l 
+  rt 45
+  circle (:l / 10)
+  rt 135 
+  fd :l 
+  rt 45
+  fd :l
+end
+
+
+to mezibranch :n :l
+ ifelse :n = 1 [
+   endmezibranch :l
+ ] [
+   mezibranch (:n - 1) :l
+ lt 45 
+ square :l
+ fd :l
+ lt 45
+ branch (:n - 1) :l
+ rt 135 
+ fd :l 
+ rt 90 
+ fd :l 
+ lt 45
+ branch (:n - 1) :l
+ lt 135
+ fd :l
+ rt 45
+   mezibranch (:n - 1) :l
+ ]
+end
+
+to branch :n :l
+  ifelse :n = 1 [
+    endbranch :l
+  ] [
+    mezibranch (:n-1) :l
+    lt 45
+    square :l
+    repeat 3 [
+      fd :l
+      lt 45 
+      branch (:n-1) :l
+      rt 135
+    ]
+    fd :l
+    rt 135
+    bk :l
+    penup 
+    if :n = 2 [ 
+      bk :l * (1 + (sqrt 2) ) 
+    ]
+    if :n = 3 [ 
+      bk :l * (3 + (3 * (sqrt 2))) 
+    ]
+    pendown
+  ]
+end
+
+ht
+home
+bk 270
+clean
+branch 4 15
+

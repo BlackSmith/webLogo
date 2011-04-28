@@ -1,0 +1,45 @@
+to penta :l
+ repeat 5 [ 
+   fd :l 
+   rt 72 
+ ]
+end
+
+to pentaflake :n :l
+ ifelse :n = 0 [ 
+   penta :l 
+ ] [
+   pentaflake (:n-1) :l
+   penup
+   fd (:l* (2 + (2*(sin 18)))^(:n-1))  
+   rt 72
+   fd (:l* (2 + (2*(sin 18)))^(:n-1))  
+   lt 144 
+   pendown
+   repeat 4 [
+     pentaflake (:n-1) :l
+     penup  
+     rt 108
+     fd (:l*(2 + (2*(sin 18)))^(:n-1))  
+     lt 36
+     pendown
+   ]
+   rt 108
+   pentaflake (:n-1) :l
+   lt 108
+   penup
+   repeat 2 [ 
+     fd (:l*(2 + (2*(sin 18)))^(:n-1))  
+     rt 72 
+   ]
+ ]
+end
+
+
+home
+rt 45
+bk 220
+lt 45
+clean 
+pendown
+pentaflake 3 15

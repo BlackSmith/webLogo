@@ -1,0 +1,33 @@
+to spiralin :n :l :angle
+  if :n > 0 [
+    fd :l 
+    rt :angle
+    spiralin (:n - 1) :l (:angle + 3)
+  ]
+end
+
+to spiralout :n :l :angle
+  if :n > 0 [
+    fd :l 
+    lt :angle
+    spiralout (:n - 1) :l (:angle - 3)
+  ]
+end
+
+to spiralblock :n :l
+  spiralin :n :l 0
+  rt 90
+  spiralout :n :l (3 * :n) 
+end
+
+ht
+home
+rt 90
+bk 280
+lt 45
+clean
+
+repeat 5 [
+  spiralblock 30 10
+]
+

@@ -1,0 +1,11 @@
+INSTALL
+==================
+1. Download aplication and upload on your web server (it's not necessary).
+2. Run index.html by support browser (FireFox 3.6+, Opera 10+, Chrome, IE9+).
+3. For english version add parametr 'en' into URL.  ('webLogo/index.html?en').
+
+
+PROBLEMS
+=================
+Security policy in some browsers can not run a local JS. Application must by upload on web server.
+

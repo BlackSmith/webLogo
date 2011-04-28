@@ -1,0 +1,30 @@
+to koch :n
+  ifelse :n = 1 [
+     fd 5
+  ] [
+     koch (:n - 1)
+     left 60
+     koch (:n - 1)
+     right 120
+     koch (:n - 1)
+     left 60
+     koch (:n - 1)     
+  ]
+end
+
+to vlocka :n
+  koch :n
+  right 120
+  koch :n
+  right 120
+  koch :n
+  right 120
+end
+
+home
+bk 100
+left 60
+bk 150
+clean
+
+vlocka 5

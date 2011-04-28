@@ -1,0 +1,45 @@
+
+to circle :r :k
+  fd (3.14 * (:r / :k))
+  rt (360 / :k)
+  repeat (:k - 1) [
+     fd ((2 * (3.14 * :r)) / :k)
+     rt (360 / :k)
+  ]
+  fd (3.14 * (:r / :k))
+end
+
+to circleline :n :r :k
+  if :n > 0 [
+    circle :r :k
+    pu
+    rt 90
+    fd (2 * :r)
+    lt 90
+    pd
+    circleline (:n-1) :r :k
+  ]
+end
+
+to grape :n :r :k
+  if :n > 0 [
+    circleline :n :r :k
+    pu
+    lt 90
+    fd (:r * ((2 * :n) - 1))
+    lt 90
+    fd (:r * (sqrt 3))
+    lt 180
+    pd
+    grape (:n - 1) :r :k
+  ]
+end
+
+
+
+home 
+lt 45
+fd 200
+rt 45
+clean
+grape 7 20 20

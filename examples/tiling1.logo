@@ -1,0 +1,65 @@
+to polygon :n :l
+  repeat :n [
+    fd :l 
+    lt (360 / :n)
+  ]
+end
+
+
+to titleline :m :l
+ repeat :m [
+  polygon 8 :l
+  lt 90
+  pu 
+  fd (:l * (1 + (2 / (sqrt 2)))) 
+  pd
+  rt 90
+  polygon 4 :l
+  lt 90
+  pu 
+  fd :l 
+  pd
+  rt 90
+ ]
+ polygon 8 :l
+end
+
+to titleboard :m :n :l 
+ repeat :n [
+   titleline :m :l
+   rt 90
+   pu 
+   fd (:l * (:m * (2 + (2 / (sqrt 2))))) 
+   bk (:l / (sqrt 2))
+   lt 90
+   fd (:l * (1 + (1 / (sqrt 2))))
+   pd   
+   polygon 4 :l
+   lt 90 
+   fd :l 
+   rt 90 
+   titleline (:m - 1) :l
+   pu 
+   lt 90 
+   fd (:l * (1 + (2 / (sqrt 2)))) 
+   rt 90 
+   pd
+   polygon 4 :l
+   pu 
+   rt 90 
+   fd (:l * ((:m * (2 + (2 / (sqrt 2)) ) + (1 / (sqrt 2)) )))
+   lt 90  
+   fd (:l * (1 + (1 / (sqrt 2)))) 
+   pd
+ ]
+ titleline :m :l
+end
+
+
+ht
+home 
+lt 45
+bk 250
+rt 45
+clean
+titleboard 5 5 20

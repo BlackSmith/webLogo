@@ -1,0 +1,23 @@
+to triangle :l
+  repeat 3 [ 
+    fd :l 
+    rt 120 
+  ]
+end
+
+to iteratedtriangle :n :l :m
+ if :n < :m [
+   triangle :n * :l
+   penup
+   rt 30 
+   bk (:l / (2 * (cos 30))) 
+   lt 30 
+   pendown
+   iteratedtriangle (:n+1) :l :m
+ ]
+end
+
+home 
+rt 30
+clean
+iteratedtriangle 1 30 15

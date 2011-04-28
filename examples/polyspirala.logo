@@ -1,0 +1,11 @@
+to polyspirala :l
+  if :l < 300 [
+   fd :l 
+   rt 61
+   polyspirala (:l + 2)
+ ]
+end
+
+home
+clean 
+polyspirala 2

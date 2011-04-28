@@ -1,0 +1,55 @@
+
+to serpl :n
+  ifelse :n = 1 [ 
+    fd 7 
+  ] [
+   serpl (:n - 1)
+   lt 60 
+   serpr (:n - 1)
+   lt 60 
+   serpl (:n - 1)
+   rt 60
+   serpr (:n - 1)
+   rt 60
+   serpl (:n - 1)
+   rt 60
+   serpr (:n - 1)
+   rt 60
+   serpl (:n - 1)
+   lt 60
+   serpr (:n - 1) 
+   lt 60
+   serpl (:n - 1)
+  ]
+end
+
+to serpr :n
+  ifelse :n = 1 [
+    fd 7 
+  ] [
+   serpr (:n - 1) 
+   rt 60 
+   serpl (:n - 1) 
+   rt 60 
+   serpr (:n - 1) 
+   lt 60
+   serpl (:n - 1) 
+   lt 60
+   serpr (:n - 1) 
+   lt 60
+   serpl (:n - 1) 
+   lt 60
+   serpr (:n - 1) 
+   rt 60
+   serpl (:n - 1) 
+   rt 60
+   serpr (:n - 1)
+  ]
+end
+
+home
+rt 45
+bk 300
+rt 45
+clean 
+serpl 4

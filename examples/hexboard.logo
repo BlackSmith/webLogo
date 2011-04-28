@@ -1,0 +1,43 @@
+to hex :l
+  repeat 6 [ 
+    fd :l 
+    rt 60 
+  ]
+end
+
+to hexline :n :l
+  lt 60 
+  hex :l
+  rt 60
+  penup 
+  fd (2 * :l)
+  pendown
+  if :n > 1 [
+    fd :l
+    hexline (:n-1) :l
+  ] 
+end
+
+to hexboard :n :m :l
+  hexline :n :l
+  rt 120
+  fd :l
+  rt 60
+  fd :l
+  hexline :n :l
+  lt 120
+  fd :l
+  lt 60
+  fd :l
+  if :m > 1 [ 
+    hexboard :n (:m-1) :l 
+  ]
+end
+
+ht
+home 
+rt 45
+back 230
+lt 45
+clean
+hexboard 5 10 25

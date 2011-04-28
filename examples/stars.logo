@@ -1,0 +1,30 @@
+to star :n :k :l
+  repeat :n [
+    fd :l
+    rt (:k * (360 / :n))
+  ]
+end
+
+to moveright 
+  penup 
+  rt 90 
+  fd 100 
+  lt 90 
+  pendown
+end
+
+home
+rt 90
+bk 200
+lt 90
+clean
+ 
+star 5 2 80
+moveright
+star 7 3 80
+moveright
+star 8 3 80
+moveright
+star 9 4 80
+moveright
+star 10 3 80

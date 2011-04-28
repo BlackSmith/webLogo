@@ -1,0 +1,61 @@
+to arc :r :angle
+  repeat :angle [
+     fd (2 * (3.14 * :r) / 360)
+     rt 1
+  ]
+end
+
+to flower1 :r :k 
+ repeat :k [
+   arc :r (360 / :k)
+   rt (180 - (360 / :k))
+   arc :r (360 / :k)
+   rt (180 - (360 / :k))
+   rt (360 / :k)
+ ]
+end
+
+to flower2 :r :k 
+ repeat :k [
+   arc :r (2 * (360 / :k))
+   rt (180 - (2 * (360 / :k)))
+   arc :r (2 * (360 / :k))
+   rt (180 - (2 * (360 / :k)))
+   rt (360 / :k)
+ ]
+end
+
+to moveright 
+  penup 
+  rt 90 
+  fd 150 
+  lt 90 
+  pendown
+end
+
+home
+fd 100
+rt 90
+bk 150
+lt 90
+clean
+
+flower1 80 6
+moveright
+flower1 110 9
+moveright
+flower1 140 12
+
+penup
+home
+bk 100
+rt 90
+bk 150
+lt 90
+pendown
+
+flower2 40 6
+moveright
+flower2 55 9
+moveright
+flower2 70 12

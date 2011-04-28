@@ -1,0 +1,25 @@
+to segmentcycle :n :m :step
+if :n < :m [
+  rt (arctan (:n / (:m - :n)))
+  fd (:step * (sqrt( (:n^2) + ((:m-:n)^2) )) )
+  bk (:step * (sqrt( (:n^2) + ((:m-:n)^2) )) )
+  lt arctan (:n / (:m-:n))
+  fd :step
+  segmentcycle (:n + 1) :m :step
+]
+end
+
+to linestar :m :step
+  repeat 4 [ 
+    segmentcycle 0 :m :step
+    rt 90 
+    fd (:step * :m)
+    rt  180
+  ]
+end
+
+home
+bk 150
+clean
+
+linestar 10 20

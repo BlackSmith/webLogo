@@ -1,0 +1,117 @@
+
+to circle :r :k
+  fd (3.14 * (:r / :k))
+  rt (360 / :k)
+  repeat (:k - 1) [
+     fd ((2 * (3.14 * :r)) / :k)
+     rt (360 / :k)
+  ]
+  fd ((3.14 * :r) / :k)
+end
+
+to arc :r :angle
+  repeat :angle  [
+     fd ((2 * (3.14 * :r)) / 360)
+     rt 1
+  ]
+end
+
+to centeredcircle :r :k
+  pu 
+  fd :r 
+  rt 90 
+  pd
+  circle :r 30
+  pu 
+  lt 90 
+  bk :r
+  pd
+end
+
+to fullcircle :r :k
+  centeredcircle :r :k
+  lt 30
+  repeat 6 [ 
+     arc :r 60 :k
+     rt 120
+     arc :r 60 :k
+     rt 180
+  ]
+  rt 30
+  pu 
+  fd :r 
+  pd
+  lt 150
+  repeat 6 [
+     arc :r 60 :k
+     lt 120 
+  ]
+  rt 150
+  pu 
+  bk :r 
+  pd
+end
+
+to partcircle :r :k
+  centeredcircle :r :k
+  lt 90
+  repeat 3 [ 
+     arc :r 60 :k
+     rt 120
+     arc :r 60 :k
+     rt 180 
+  ]
+  lt 30 
+  pu 
+  fd :r 
+  pd
+  lt 150 
+  repeat 2 [
+     arc :r 60 :k
+     lt 120 
+  ]
+  rt 150
+  pu 
+  bk :r 
+  pd
+  rt 60
+end
+
+
+to flowerpart :n :r
+  ifelse :n = 1 [
+    partcircle :r :k 
+  ] [
+    centeredcircle :r :k
+    repeat 2 [
+      pu 
+      fd :r 
+      pd
+      flowerpart (:n - 1) :r
+      pu 
+      bk :r 
+      pd
+      rt 60
+    ]
+    lt 120
+  ] 
+end
+
+to flower :n :r :k
+  centeredcircle :r :k
+  repeat 6 [ 
+      pu 
+      fd :r
+      pd
+      flowerpart (:n - 1) :r
+      pu 
+      bk :r 
+      pd
+      rt 60
+  ]
+end
+
+ht
+home
+clean 
+flower 3 50 90

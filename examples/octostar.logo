@@ -1,0 +1,19 @@
+to cikcak :l :angle
+  rt :angle
+  fd :l 
+  lt :angle 
+  bk :l
+  lt :angle
+  fd :l
+end
+
+to cikcakpoly :n :l
+  repeat :n [
+    cikcak :l (360 / :n)
+  ]
+end
+
+home
+clean
+
+cikcakpoly 8 100

@@ -1,0 +1,22 @@
+to square :l
+  repeat 4 [ 
+    fd :l 
+    rt 90  
+  ]
+end
+
+to iteratedsquare :n :alpha :l 
+  square :l
+  if :n > 1 [
+    fd (:l * ((sin :alpha) / ((sin :alpha) + (cos :alpha)) ))
+    rt :alpha
+    iteratedsquare (:n-1) :alpha (:l / ((sin :alpha) + (cos :alpha)) )
+  ]
+end
+
+home
+rt 45
+back 300
+lt 45
+clean
+iteratedsquare 30 10 400

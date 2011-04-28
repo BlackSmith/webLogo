@@ -1,0 +1,30 @@
+to polygon :n :l
+  repeat :n [
+    fd :l 
+    lt (360 / :n)
+  ]
+end
+
+
+home
+rt 90
+back 200
+clean
+
+polygon 3 50
+penup 
+fd 70 
+pendown
+polygon 4 40
+penup 
+fd 70 
+pendown
+polygon 5 30
+penup 
+fd 70 
+pendown
+polygon 6 25
+penup 
+fd 70 
+pendown
+polygon 35 4
