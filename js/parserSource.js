@@ -572,6 +572,12 @@ function ParserSource(turtle, source) {
                         //this.setVar('_line', this.line);
                         
                         //this.stack.unshift(key);
+                     } else if (this.state[0] == states.IFSEC ||
+                                this.state[0] == states.IFSECN) {
+                        this.createSpace();
+                        if(this.state[1] == states.IFSECN) {
+                            this.setVar('_norun',true);
+                        }
                      } else  if(this.state[1] == states.IF ||
                                 this.state[1] == states.IFELSE) {
                         var con = this.stack.shift();
@@ -581,12 +587,6 @@ function ParserSource(turtle, source) {
                         }
                         this.createSpace();
                         if(!con) {
-                            this.setVar('_norun',true);
-                        }
-                     } else if (this.state[0] == states.IFSEC ||
-                                this.state[0] == states.IFSECN) {
-                        this.createSpace();
-                        if(this.state[1] == states.IFSECN) {
                             this.setVar('_norun',true);
                         }
                      } else if(norun) {
